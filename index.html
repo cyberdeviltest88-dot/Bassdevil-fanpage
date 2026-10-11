@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BASS_D3V1L — Official Site</title>
+<meta name="description" content="BASS_D3V1L — EDM producer & DJ. Heavy bass, neon nights, built for the drop." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   BASS_D3V1L — THEME
+   ============================================================ */
+:root{
+  --bg:#05060a;
+  --bg-soft:#0a0c14;
+  --panel:#0d1019;
+  --panel-2:#12151f;
+  --line:rgba(255,255,255,.08);
+  --line-hot:rgba(0,229,255,.35);
+  --txt:#e9edf7;
+  --muted:#79839b;
+  --cyan:#00e5ff;
+  --magenta:#ff2fd0;
+  --lime:#b6ff3d;
+  --red:#ff3b5c;
+  --radius:14px;
+  --shadow:0 20px 60px rgba(0,0,0,.55);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{
+  background:var(--bg);color:var(--txt);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(900px 500px at 12% -5%, rgba(0,229,255,.10), transparent 60%),
+    radial-gradient(800px 500px at 88% 8%, rgba(255,47,208,.09), transparent 60%),
+    radial-gradient(900px 700px at 50% 110%, rgba(124,58,237,.10), transparent 60%);
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.35;
+  background:repeating-linear-gradient(180deg,rgba(255,255,255,.022) 0 1px,transparent 1px 3px);
+  mix-blend-mode:overlay;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font:inherit;color:inherit}
+::selection{background:var(--magenta);color:#fff}
+.wrap{width:min(1180px,92vw);margin-inline:auto;position:relative;z-index:2}
+
+/* ============ NAV ============ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px clamp(16px,4vw,40px);
+  transition:background .3s ease, border-color .3s ease, padding .3s ease;
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{
+  background:rgba(5,6,10,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom-color:var(--line);padding-top:12px;padding-bottom:12px;
+}
+.logo{
+  font-family:'Orbitron',sans-serif;font-weight:900;
+  font-size:clamp(.95rem,2.2vw,1.15rem);letter-spacing:.14em;color:#fff;
+  text-shadow:0 0 18px rgba(0,229,255,.6);white-space:nowrap;
+}
+.logo span{color:var(--magenta);text-shadow:0 0 18px rgba(255,47,208,.8)}
+.nav-links{display:flex;gap:34px;align-items:center}
+.nav-links a{
+  font-size:.82rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);transition:color .2s, text-shadow .2s;position:relative;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:-6px;height:1px;width:0;
+  background:linear-gradient(90deg,var(--cyan),var(--magenta));transition:width .28s;
+}
+.nav-links a:hover{color:#fff;text-shadow:0 0 14px rgba(0,229,255,.7)}
+.nav-links a:hover::after{width:100%}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:6px;flex-direction:column;gap:5px}
+.burger span{display:block;width:24px;height:2px;background:#fff;transition:.3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:820px){
+  .burger{display:flex}
+  .nav-links{
+    position:fixed;inset:0;background:rgba(5,6,10,.97);
+    flex-direction:column;justify-content:center;gap:34px;
+    transform:translateY(-100%);transition:transform .4s cubic-bezier(.7,0,.2,1);z-index:-1;
+  }
+  .nav-links.open{transform:translateY(0)}
+  .nav-links a{font-size:1.3rem}
+}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden;isolation:isolate}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.hero-inner{position:relative;z-index:2;text-align:center;padding:120px 20px 90px;width:min(1100px,94vw)}
+.eyebrow{
+  font-size:clamp(.6rem,1.6vw,.76rem);letter-spacing:.42em;text-transform:uppercase;
+  color:var(--cyan);margin-bottom:22px;font-weight:600;
+  text-shadow:0 0 16px rgba(0,229,255,.7);opacity:0;animation:fadeUp .8s .2s forwards;
+}
+.glitch{
+  position:relative;font-family:'Orbitron',sans-serif;font-weight:900;
+  font-size:clamp(2.3rem,10.5vw,8.4rem);line-height:.92;letter-spacing:.01em;text-transform:uppercase;
+  color:#fff;text-shadow:0 0 40px rgba(0,229,255,.35), 0 0 90px rgba(255,47,208,.25);
+  opacity:0;animation:fadeUp .9s .35s forwards;user-select:none;
+}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;left:0;top:0;width:100%;pointer-events:none}
+.glitch::before{color:var(--cyan);clip-path:inset(0 0 56% 0);animation:glitchA 4.2s infinite steps(1)}
+.glitch::after{color:var(--magenta);clip-path:inset(56% 0 0 0);animation:glitchB 3.4s infinite steps(1)}
+@keyframes glitchA{0%,88%,100%{transform:translate(0,0);opacity:.75}89%{transform:translate(-4px,-2px);opacity:1}91%{transform:translate(3px,1px)}93%{transform:translate(-2px,2px);opacity:.5}95%{transform:translate(0,0)}}
+@keyframes glitchB{0%,84%,100%{transform:translate(0,0);opacity:.75}85%{transform:translate(4px,2px);opacity:1}88%{transform:translate(-3px,-1px)}90%{transform:translate(2px,-2px);opacity:.5}92%{transform:translate(0,0)}}
+.tagline{
+  margin-top:26px;font-size:clamp(.95rem,2.2vw,1.2rem);color:var(--muted);
+  letter-spacing:.06em;max-width:620px;margin-inline:auto;opacity:0;animation:fadeUp .9s .55s forwards;
+}
+.hero-cta{margin-top:42px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .9s .75s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+
+.btn{
+  display:inline-flex;align-items:center;gap:10px;justify-content:center;
+  padding:15px 32px;border-radius:100px;
+  font-size:.8rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  cursor:pointer;border:1px solid transparent;white-space:nowrap;
+  transition:transform .2s, box-shadow .25s, background .25s, color .25s, border-color .25s;
+}
+.btn:active{transform:scale(.97)}
+.btn-primary{
+  background:linear-gradient(100deg,var(--cyan),var(--magenta));
+  color:#04060b;font-weight:800;
+  box-shadow:0 0 0 rgba(0,229,255,0), 0 12px 34px rgba(255,47,208,.28);
+}
+.btn-primary:hover{box-shadow:0 0 30px rgba(0,229,255,.55), 0 12px 44px rgba(255,47,208,.45);transform:translateY(-2px)}
+.btn-ghost{border-color:rgba(255,255,255,.22);color:#fff;background:rgba(255,255,255,.02);backdrop-filter:blur(6px)}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 26px rgba(0,229,255,.28);transform:translateY(-2px)}
+.btn-danger{border-color:rgba(255,59,92,.4);color:var(--red);background:rgba(255,59,92,.06)}
+.btn-danger:hover{background:rgba(255,59,92,.16);box-shadow:0 0 22px rgba(255,59,92,.3)}
+.btn-sm{padding:9px 18px;font-size:.64rem;letter-spacing:.12em}
+
+.scroll-hint{
+  position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
+  font-size:.6rem;letter-spacing:.45em;color:var(--muted);
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.scroll-hint::after{content:"";width:1px;height:42px;background:linear-gradient(180deg,var(--cyan),transparent);animation:scrollPulse 2.2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ============ STATS ============ */
+.stats{position:relative;z-index:3;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(13,16,25,.9),rgba(5,6,10,.9))}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);width:min(1180px,92vw);margin-inline:auto}
+.stat{padding:34px 18px;text-align:center;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(1.3rem,3.4vw,2rem);color:#fff;text-shadow:0 0 24px rgba(0,229,255,.5)}
+.stat span{font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:640px){
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}
+}
+
+/* ============ SECTIONS ============ */
+.section{padding:clamp(80px,11vw,140px) 0;position:relative;z-index:2}
+.sec-head{margin-bottom:52px}
+.sec-label{display:inline-block;font-size:.66rem;letter-spacing:.36em;text-transform:uppercase;color:var(--magenta);font-weight:700;margin-bottom:16px;text-shadow:0 0 16px rgba(255,47,208,.6)}
+.sec-title{font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(1.7rem,5.4vw,3.3rem);line-height:1.05;letter-spacing:-.01em}
+.sec-title em{font-style:normal;background:linear-gradient(100deg,var(--cyan),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ PLAYER ============ */
+.player{
+  display:grid;grid-template-columns:190px 1fr;gap:32px;
+  background:linear-gradient(160deg,var(--panel),var(--bg-soft));
+  border:1px solid var(--line);border-radius:22px;padding:28px;
+  box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.player::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--magenta),transparent);opacity:.7}
+.player-art{display:flex;align-items:center;justify-content:center;aspect-ratio:1;border-radius:18px;background:radial-gradient(circle at 50% 50%,#151a28,#070910);border:1px solid var(--line);position:relative;overflow:hidden}
+.disc{
+  width:76%;aspect-ratio:1;border-radius:50%;
+  background:
+    radial-gradient(circle at 50% 50%, #0a0d15 0 18%, transparent 18%),
+    repeating-radial-gradient(circle at 50% 50%, #1b2130 0 2px, #10141d 2px 5px);
+  border:1px solid rgba(0,229,255,.28);
+  box-shadow:0 0 34px rgba(0,229,255,.16), inset 0 0 40px rgba(0,0,0,.9);
+  position:relative;
+}
+.disc::after{content:"";position:absolute;inset:38%;border-radius:50%;background:linear-gradient(120deg,var(--cyan),var(--magenta));box-shadow:0 0 22px rgba(255,47,208,.7)}
+.disc.spin{animation:spin 3.4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.player-main{display:flex;flex-direction:column;gap:18px;min-width:0}
+.np-label{font-size:.6rem;letter-spacing:.34em;color:var(--cyan);font-weight:700}
+#npTitle{font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(1.05rem,2.8vw,1.6rem);margin-top:6px;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#npSub{font-size:.78rem;color:var(--muted);letter-spacing:.08em;margin-top:2px}
+#viz{width:100%;height:76px;display:block;border-radius:10px;background:rgba(0,0,0,.28);border:1px solid var(--line)}
+.player-controls{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.ctrl{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid var(--line);color:#fff;cursor:pointer;display:grid;place-items:center;font-size:.9rem;transition:.22s;flex:none}
+.ctrl:hover{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 20px rgba(0,229,255,.3)}
+.ctrl-play{width:56px;height:56px;font-size:1.1rem;background:linear-gradient(120deg,var(--cyan),var(--magenta));color:#04060b;border:0;font-weight:900;box-shadow:0 0 28px rgba(0,229,255,.45)}
+.ctrl-play:hover{box-shadow:0 0 42px rgba(255,47,208,.6);color:#04060b}
+.progress{flex:1;min-width:120px;height:6px;border-radius:100px;background:rgba(255,255,255,.08);cursor:pointer;position:relative}
+.progress-fill{height:100%;width:0%;border-radius:100px;background:linear-gradient(90deg,var(--cyan),var(--magenta));box-shadow:0 0 14px rgba(0,229,255,.6);transition:width .12s linear}
+.time{font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums;letter-spacing:.06em;flex:none}
+.vol{display:flex;align-items:center;gap:8px;flex:none}
+.vol span{font-size:.75rem;color:var(--muted)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:88px;height:4px;border-radius:100px;background:rgba(255,255,255,.14);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:13px;height:13px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px rgba(0,229,255,.9);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:13px;height:13px;border:0;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px rgba(0,229,255,.9);cursor:pointer}
+@media(max-width:780px){
+  .player{grid-template-columns:1fr;padding:20px;gap:22px}
+  .player-art{max-width:190px;margin-inline:auto}
+  .player-controls{gap:10px}
+  .progress{order:10;flex-basis:100%}
+  .vol{display:none}
+}
+.badge-demo{display:none;font-size:.58rem;letter-spacing:.2em;font-weight:700;color:var(--lime);border:1px solid rgba(182,255,61,.4);padding:2px 8px;border-radius:100px;margin-left:10px;vertical-align:middle}
+.badge-demo.on{display:inline-block}
+.badge-upload{display:inline-block;font-size:.5rem;letter-spacing:.18em;font-weight:800;color:#04060b;background:var(--lime);padding:2px 7px;border-radius:100px;margin-left:8px;vertical-align:middle}
+
+/* ============ TRACKLIST ============ */
+.tracklist{margin-top:26px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:rgba(13,16,25,.5)}
+.track{display:grid;grid-template-columns:52px 1fr auto auto;align-items:center;gap:18px;padding:16px 22px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .22s, padding-left .22s;position:relative}
+.track:last-child{border-bottom:0}
+.track:hover{background:rgba(0,229,255,.05);padding-left:26px}
+.track.active{background:linear-gradient(90deg,rgba(0,229,255,.10),rgba(255,47,208,.05))}
+.track.active::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--cyan),var(--magenta))}
+.track-num{font-family:'Orbitron',sans-serif;font-weight:700;font-size:.82rem;color:var(--muted);text-align:center}
+.track.active .track-num{color:var(--cyan);text-shadow:0 0 14px rgba(0,229,255,.8)}
+.track-info h4{font-size:.95rem;font-weight:700;letter-spacing:.02em;margin-bottom:2px}
+.track-info p{font-size:.7rem;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+.track-dur{font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.track-play{width:34px;height:34px;border-radius:50%;flex:none;border:1px solid var(--line);background:transparent;color:#fff;display:grid;place-items:center;font-size:.7rem;cursor:pointer;transition:.22s}
+.track:hover .track-play{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 16px rgba(0,229,255,.35)}
+.track.active .track-play{background:linear-gradient(120deg,var(--cyan),var(--magenta));color:#04060b;border:0;font-weight:900}
+@media(max-width:620px){
+  .track{grid-template-columns:36px 1fr auto;gap:12px;padding:14px 16px}
+  .track-dur{display:none}
+  .track-play{width:30px;height:30px}
+}
+
+/* ============ SHOWS ============ */
+.shows{display:flex;flex-direction:column;gap:12px}
+.show{display:grid;grid-template-columns:130px 1fr auto;align-items:center;gap:24px;padding:22px 26px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(120deg,rgba(13,16,25,.9),rgba(10,12,20,.6));transition:border-color .25s, transform .25s, box-shadow .25s}
+.show:hover{border-color:var(--line-hot);transform:translateX(6px);box-shadow:0 0 34px rgba(0,229,255,.1)}
+.show-date{font-family:'Orbitron',sans-serif;font-weight:900;font-size:.9rem;color:var(--cyan);letter-spacing:.04em;line-height:1.3}
+.show-date small{display:block;font-family:'Inter',sans-serif;font-weight:600;font-size:.66rem;color:var(--muted);letter-spacing:.24em;margin-top:3px}
+.show-venue h4{font-size:1rem;font-weight:700;margin-bottom:3px}
+.show-venue p{font-size:.76rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.show.soldout .btn{opacity:.42;pointer-events:none}
+.show .btn{padding:11px 24px;font-size:.68rem}
+@media(max-width:720px){
+  .show{grid-template-columns:1fr;gap:14px;padding:20px}
+  .show .btn{justify-self:start}
+}
+
+/* ============ FAN WALL ============ */
+.fan-layout{display:grid;grid-template-columns:1fr 380px;gap:36px;align-items:start}
+@media(max-width:980px){.fan-layout{grid-template-columns:1fr}}
+.wall{display:flex;flex-direction:column;gap:14px;max-height:640px;overflow-y:auto;padding-right:8px}
+.wall::-webkit-scrollbar{width:6px}
+.wall::-webkit-scrollbar-track{background:rgba(255,255,255,.03);border-radius:100px}
+.wall::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--cyan),var(--magenta));border-radius:100px}
+.fan-card{border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:rgba(13,16,25,.72);position:relative;animation:popIn .45s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes popIn{from{opacity:0;transform:translateY(-10px) scale(.98)}to{opacity:1;transform:none}}
+.fan-card.is-request{border-color:rgba(182,255,61,.28);background:linear-gradient(140deg,rgba(182,255,61,.05),rgba(13,16,25,.75))}
+.fan-top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.avatar{width:36px;height:36px;border-radius:50%;flex:none;display:grid;place-items:center;font-weight:800;font-size:.82rem;color:#04060b;font-family:'Orbitron',sans-serif}
+.fan-name{font-weight:700;font-size:.86rem;letter-spacing:.04em;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.fan-time{font-size:.66rem;color:var(--muted);letter-spacing:.08em}
+.fan-msg{font-size:.88rem;color:#c3cbdc;line-height:1.65;word-break:break-word}
+.req-tag{font-size:.52rem;letter-spacing:.16em;font-weight:800;color:#04060b;background:var(--lime);padding:2px 8px;border-radius:100px}
+.fan-actions{display:flex;gap:16px;margin-top:12px;align-items:center}
+.like-btn{background:none;border:0;cursor:pointer;color:var(--muted);font-size:.72rem;display:flex;align-items:center;gap:6px;letter-spacing:.1em;transition:.2s;padding:2px 0}
+.like-btn:hover{color:var(--magenta)}
+.like-btn.liked{color:var(--magenta);text-shadow:0 0 14px rgba(255,47,208,.7)}
+.fan-replies{margin-top:14px;padding-left:14px;border-left:2px solid rgba(0,229,255,.35);display:flex;flex-direction:column;gap:10px}
+.reply{background:rgba(0,229,255,.05);border:1px solid rgba(0,229,255,.18);border-radius:10px;padding:11px 14px}
+.reply-head{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.reply-badge{font-family:'Orbitron',sans-serif;font-weight:900;font-size:.58rem;letter-spacing:.14em;background:linear-gradient(100deg,var(--cyan),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent}
+.reply-time{font-size:.6rem;color:var(--muted);letter-spacing:.08em}
+.reply p{font-size:.82rem;color:#cdd5e6;line-height:1.6}
+
+.fan-form{border:1px solid var(--line);border-radius:18px;padding:26px;background:linear-gradient(160deg,var(--panel),var(--bg-soft));position:sticky;top:100px;box-shadow:var(--shadow)}
+.fan-form h3{font-family:'Orbitron',sans-serif;font-weight:900;font-size:1rem;letter-spacing:.08em;margin-bottom:6px}
+.fan-form > p{font-size:.76rem;color:var(--muted);margin-bottom:20px;letter-spacing:.04em}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;font-weight:600}
+.field input,.field textarea,.field select{width:100%;background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:.86rem;color:#fff;transition:border-color .22s, box-shadow .22s;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,229,255,.12)}
+.field textarea{min-height:96px;font-family:inherit}
+.fan-form .btn{width:100%;justify-content:center;margin-top:6px}
+.check-row{display:flex;align-items:center;gap:10px;margin-bottom:16px;cursor:pointer;user-select:none}
+.check-row input{width:18px;height:18px;accent-color:#00e5ff;cursor:pointer;flex:none}
+.check-row span{font-size:.76rem;color:#b9c2d4;letter-spacing:.04em}
+
+/* ============ CONNECT ============ */
+.connect-box{
+  border:1px solid var(--line);border-radius:24px;padding:clamp(30px,6vw,64px);
+  background:
+    radial-gradient(600px 300px at 15% 0%, rgba(0,229,255,.10), transparent 65%),
+    radial-gradient(600px 300px at 85% 100%, rgba(255,47,208,.10), transparent 65%),
+    linear-gradient(160deg,var(--panel),var(--bg-soft));
+  text-align:center;box-shadow:var(--shadow);
+}
+.connect-box h2{font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(1.5rem,4.6vw,2.6rem);margin-bottom:14px;line-height:1.1}
+.connect-box > p{color:var(--muted);max-width:520px;margin:0 auto 34px;font-size:.94rem}
+.signup{display:flex;gap:10px;max-width:520px;margin:0 auto;flex-wrap:wrap}
+.signup input{flex:1;min-width:200px;background:rgba(0,0,0,.4);border:1px solid var(--line);border-radius:100px;padding:15px 24px;font-size:.88rem;color:#fff}
+.signup input:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,229,255,.12)}
+.signup .btn{flex:none}
+.socials{display:flex;gap:14px;justify-content:center;margin-top:44px;flex-wrap:wrap}
+.social{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);color:var(--muted);font-size:.66rem;font-weight:800;letter-spacing:.06em;transition:.25s}
+.social:hover{color:#04060b;border-color:transparent;background:linear-gradient(120deg,var(--cyan),var(--magenta));box-shadow:0 0 30px rgba(255,47,208,.5);transform:translateY(-4px)}
+.form-note{margin-top:18px;font-size:.72rem;color:var(--lime);letter-spacing:.1em;min-height:1em}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--line);padding:44px 0 34px;position:relative;z-index:2;background:rgba(5,6,10,.6)}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;width:min(1180px,92vw);margin-inline:auto}
+.foot p{font-size:.72rem;color:var(--muted);letter-spacing:.1em}
+.foot .logo{font-size:.9rem}
+.artist-link{
+  font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;
+  color:rgba(121,131,155,.6);cursor:pointer;background:none;border:0;
+  transition:.25s;padding:6px 10px;border-radius:8px;
+}
+.artist-link:hover{color:var(--cyan);text-shadow:0 0 14px rgba(0,229,255,.7);background:rgba(0,229,255,.06)}
+
+/* ============ TOAST ============ */
+.toast{
+  position:fixed;left:50%;bottom:34px;transform:translate(-50%,140%);
+  background:rgba(13,16,25,.97);border:1px solid var(--line-hot);color:#fff;
+  padding:14px 26px;border-radius:100px;font-size:.82rem;z-index:10000;
+  transition:transform .45s cubic-bezier(.2,.9,.3,1.2);
+  box-shadow:0 12px 40px rgba(0,0,0,.7), 0 0 30px rgba(0,229,255,.16);
+  max-width:90vw;text-align:center;
+}
+.toast.show{transform:translate(-50%,0)}
+
+/* ============================================================
+   LOGIN MODAL
+   ============================================================ */
+.modal-backdrop{
+  position:fixed;inset:0;z-index:2000;
+  background:rgba(3,4,8,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  opacity:0;pointer-events:none;transition:opacity .28s;
+}
+.modal-backdrop.open{opacity:1;pointer-events:auto}
+.modal{
+  width:min(430px,100%);
+  background:linear-gradient(160deg,var(--panel),var(--bg-soft));
+  border:1px solid var(--line);border-radius:22px;padding:36px 32px;
+  box-shadow:0 30px 90px rgba(0,0,0,.75), 0 0 60px rgba(0,229,255,.1);
+  position:relative;transform:translateY(24px) scale(.97);transition:transform .32s cubic-bezier(.2,.9,.3,1.2);
+}
+.modal-backdrop.open .modal{transform:none}
+.modal::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--magenta),transparent)}
+.modal-close{
+  position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;
+  background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--muted);
+  cursor:pointer;display:grid;place-items:center;font-size:.8rem;transition:.2s;
+}
+.modal-close:hover{color:#fff;border-color:var(--red);background:rgba(255,59,92,.12)}
+.modal h3{font-family:'Orbitron',sans-serif;font-weight:900;font-size:1.35rem;letter-spacing:.06em;margin-bottom:8px}
+.modal > p{font-size:.8rem;color:var(--muted);margin-bottom:26px;letter-spacing:.04em}
+.login-err{
+  font-size:.74rem;color:var(--red);letter-spacing:.06em;min-height:1.2em;
+  margin:-4px 0 12px;font-weight:600;
+}
+.login-hint{
+  margin-top:20px;font-size:.68rem;color:var(--muted);text-align:center;
+  letter-spacing:.04em;line-height:1.8;
+}
+.login-hint code{
+  font-family:ui-monospace,monospace;background:rgba(0,229,255,.1);
+  color:var(--cyan);padding:2px 7px;border-radius:5px;font-size:.68rem;
+  border:1px solid rgba(0,229,255,.2);
+}
+.shake{animation:shake .4s}
+@keyframes shake{
+  0%,100%{transform:translateX(0)}
+  20%{transform:translateX(-9px)}40%{transform:translateX(9px)}
+  60%{transform:translateX(-6px)}80%{transform:translateX(6px)}
+}
+
+/* ============================================================
+   ADMIN PORTAL
+   ============================================================ */
+.portal{
+  position:fixed;inset:0;z-index:1500;background:var(--bg);
+  overflow-y:auto;overscroll-behavior:contain;
+  opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.portal.open{opacity:1;pointer-events:auto}
+.portal::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(900px 500px at 10% 0%, rgba(0,229,255,.08), transparent 60%),
+    radial-gradient(900px 500px at 90% 10%, rgba(255,47,208,.07), transparent 60%);
+}
+.portal-inner{position:relative;z-index:1;width:min(1240px,94vw);margin-inline:auto;padding:0 0 80px}
+
+.portal-head{
+  position:sticky;top:0;z-index:20;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  padding:20px 0;margin-bottom:8px;
+  background:rgba(5,6,10,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+}
+.portal-head-left{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.portal-tag{
+  font-family:'Inter',sans-serif;font-weight:800;font-size:.55rem;letter-spacing:.3em;
+  background:linear-gradient(100deg,var(--cyan),var(--magenta));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  border:1px solid rgba(0,229,255,.3);padding:4px 10px;border-radius:100px;
+}
+.portal-head-right{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.portal-user{
+  font-size:.68rem;letter-spacing:.14em;color:var(--lime);font-weight:700;
+  display:flex;align-items:center;gap:8px;text-transform:uppercase;
+}
+.portal-user::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 12px var(--lime);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+
+.portal-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:26px 0 34px;border-bottom:1px solid var(--line);padding-bottom:0}
+.ptab{
+  background:none;border:0;cursor:pointer;
+  padding:14px 22px;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);border-bottom:2px solid transparent;transition:.25s;
+  display:flex;align-items:center;gap:9px;white-space:nowrap;
+}
+.ptab:hover{color:#fff}
+.ptab.active{color:var(--cyan);border-bottom-color:var(--cyan);text-shadow:0 0 16px rgba(0,229,255,.6)}
+.pill{
+  font-size:.56rem;font-weight:800;background:var(--magenta);color:#04060b;
+  padding:2px 7px;border-radius:100px;letter-spacing:.06em;min-width:20px;text-align:center;
+}
+.pill.zero{background:rgba(255,255,255,.1);color:var(--muted)}
+
+.pane{display:none;animation:fadeUp .4s}
+.pane.active{display:block}
+
+/* dashboard */
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:34px}
+.dash-card{
+  border:1px solid var(--line);border-radius:16px;padding:24px;
+  background:linear-gradient(160deg,var(--panel),var(--bg-soft));
+  position:relative;overflow:hidden;transition:.28s;
+}
+.dash-card:hover{border-color:var(--line-hot);transform:translateY(-3px);box-shadow:0 0 34px rgba(0,229,255,.1)}
+.dash-card::after{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:.5}
+.dash-card b{display:block;font-family:'Orbitron',sans-serif;font-weight:900;font-size:2rem;color:#fff;text-shadow:0 0 24px rgba(0,229,255,.45);line-height:1.1}
+.dash-card span{font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);display:block;margin-top:8px}
+.dash-card.lime b{text-shadow:0 0 24px rgba(182,255,61,.5)}
+.dash-card.magenta b{text-shadow:0 0 24px rgba(255,47,208,.5)}
+
+.panel-box{
+  border:1px solid var(--line);border-radius:18px;padding:28px;
+  background:linear-gradient(160deg,rgba(13,16,25,.85),rgba(10,12,20,.6));
+  margin-bottom:24px;
+}
+.panel-box h3{
+  font-family:'Orbitron',sans-serif;font-weight:900;font-size:.95rem;
+  letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase;
+}
+.panel-box > p.sub{font-size:.76rem;color:var(--muted);margin-bottom:24px;letter-spacing:.04em}
+
+.upload-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.upload-grid{grid-template-columns:1fr}}
+
+.drop-zone{
+  border:2px dashed rgba(0,229,255,.3);border-radius:14px;padding:34px 20px;
+  text-align:center;cursor:pointer;transition:.28s;background:rgba(0,229,255,.03);
+  margin-bottom:16px;
+}
+.drop-zone:hover,.drop-zone.drag{border-color:var(--cyan);background:rgba(0,229,255,.09);box-shadow:0 0 34px rgba(0,229,255,.14)}
+.drop-zone .dz-icon{font-size:2rem;margin-bottom:10px;display:block;filter:drop-shadow(0 0 14px rgba(0,229,255,.7))}
+.drop-zone .dz-main{font-size:.88rem;font-weight:700;letter-spacing:.04em;margin-bottom:4px}
+.drop-zone .dz-sub{font-size:.72rem;color:var(--muted);letter-spacing:.06em}
+.drop-zone.has-file{border-color:var(--lime);border-style:solid;background:rgba(182,255,61,.06)}
+.drop-zone.has-file .dz-main{color:var(--lime)}
+
+/* admin list items */
+.admin-item{
+  border:1px solid var(--line);border-radius:14px;padding:20px 22px;
+  background:rgba(10,12,20,.6);margin-bottom:12px;transition:.25s;
+}
+.admin-item:hover{border-color:var(--line-hot)}
+.admin-item.is-request{border-left:3px solid var(--lime)}
+.ai-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:12px;flex-wrap:wrap}
+.ai-who{display:flex;align-items:center;gap:12px;min-width:0}
+.ai-meta{font-size:.64rem;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+.ai-msg{font-size:.88rem;color:#c9d2e3;line-height:1.68;word-break:break-word;margin-bottom:14px}
+.ai-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.ai-replies{margin-top:14px;display:flex;flex-direction:column;gap:10px}
+.ai-reply-form{display:none;margin-top:14px;gap:10px;flex-direction:column}
+.ai-reply-form.open{display:flex}
+.ai-reply-form textarea{
+  width:100%;min-height:76px;background:rgba(0,0,0,.4);border:1px solid var(--line);
+  border-radius:10px;padding:12px 14px;font-size:.84rem;color:#fff;resize:vertical;font-family:inherit;
+}
+.ai-reply-form textarea:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,229,255,.12)}
+
+.song-row{
+  display:grid;grid-template-columns:44px 1fr auto auto;gap:16px;align-items:center;
+  padding:14px 18px;border:1px solid var(--line);border-radius:12px;
+  background:rgba(10,12,20,.6);margin-bottom:10px;transition:.25s;
+}
+.song-row:hover{border-color:var(--line-hot)}
+.song-num{font-family:'Orbitron',sans-serif;font-weight:800;font-size:.78rem;color:var(--cyan);text-align:center}
+.song-row h5{font-size:.88rem;font-weight:700;margin-bottom:2px}
+.song-row p{font-size:.66rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.song-row .dur{font-size:.74rem;color:var(--muted);font-variant-numeric:tabular-nums}
+
+.empty{
+  text-align:center;padding:56px 20px;color:var(--muted);
+  border:1px dashed var(--line);border-radius:16px;
+}
+.empty .e-icon{font-size:2.2rem;display:block;margin-bottom:14px;opacity:.5}
+.empty p{font-size:.84rem;letter-spacing:.06em}
+
+@media(max-width:720px){
+  .portal-head{padding:16px 0}
+  .portal-user{display:none}
+  .ptab{padding:12px 14px;font-size:.64rem}
+  .song-row{grid-template-columns:36px 1fr auto;gap:12px}
+  .song-row .dur{display:none}
+}
+
+/* upload progress */
+.up-bar{height:4px;border-radius:100px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:14px;display:none}
+.up-bar.on{display:block}
+.up-bar i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--cyan),var(--magenta));transition:width .25s}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <a class="logo" href="#home">BASS<span>_</span>D3V1L</a>
+  <nav class="nav-links" id="navLinks">
+    <a href="#music">Music</a>
+    <a href="#shows">Shows</a>
+    <a href="#fans">Fan Wall</a>
+    <a href="#connect">Connect</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-inner">
+    <p class="eyebrow">// EDM Producer · DJ · Sound Designer</p>
+    <h1 class="glitch" data-text="BASS_D3V1L">BASS_D3V1L</h1>
+    <p class="tagline">Heavy bass. Neon nights. Built for the drop.</p>
+    <div class="hero-cta">
+      <a href="#music" class="btn btn-primary">▶ Play Latest</a>
+      <a href="#connect" class="btn btn-ghost">Join The Cult</a>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+<!-- ================= STATS ================= -->
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat"><b data-count="128" data-suffix="K">0</b><span>Monthly Listeners</span></div>
+    <div class="stat"><b data-count="42" data-suffix="">0</b><span>Releases</span></div>
+    <div class="stat"><b data-count="310" data-suffix="+">0</b><span>Shows Played</span></div>
+    <div class="stat"><b data-count="9" data-suffix="M">0</b><span>Total Streams</span></div>
+  </div>
+</div>
+
+<!-- ================= MUSIC ================= -->
+<section class="section" id="music">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-label">01 — Discography</span>
+      <h2 class="sec-title">The <em>Bangers</em></h2>
+    </div>
+
+    <div class="player reveal">
+      <div class="player-art"><div class="disc" id="disc"></div></div>
+      <div class="player-main">
+        <div class="player-meta">
+          <span class="np-label">NOW PLAYING</span>
+          <h3 id="npTitle">Select a track<span class="badge-demo" id="demoBadge">PREVIEW</span></h3>
+          <p id="npSub">Press play to start the set</p>
+        </div>
+        <canvas id="viz"></canvas>
+        <div class="player-controls">
+          <button class="ctrl" id="prevBtn" aria-label="Previous">⏮</button>
+          <button class="ctrl ctrl-play" id="playBtn" aria-label="Play">▶</button>
+          <button class="ctrl" id="nextBtn" aria-label="Next">⏭</button>
+          <div class="progress" id="progress"><div class="progress-fill" id="progressFill"></div></div>
+          <span class="time" id="time">0:00 / 0:00</span>
+          <div class="vol">
+            <span>🔊</span>
+            <input type="range" id="volume" min="0" max="1" step="0.01" value="0.85" aria-label="Volume">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tracklist reveal" id="tracklist"></div>
+  </div>
+</section>
+
+<!-- ================= SHOWS ================= -->
+<section class="section" id="shows">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-label">02 — Tour</span>
+      <h2 class="sec-title">Catch Me <em>Live</em></h2>
+    </div>
+    <div class="shows reveal" id="showsList"></div>
+  </div>
+</section>
+
+<!-- ================= FAN WALL ================= -->
+<section class="section" id="fans">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-label">03 — Community</span>
+      <h2 class="sec-title">The <em>Fan Wall</em></h2>
+    </div>
+
+    <div class="fan-layout">
+      <div class="wall reveal" id="wall"></div>
+
+      <div class="fan-form reveal">
+        <h3>DROP A MESSAGE</h3>
+        <p>Say something. Request a track. Start a mosh pit in the comments.</p>
+        <form id="fanForm" autocomplete="off">
+          <div class="field">
+            <label for="fanName">Your handle</label>
+            <input type="text" id="fanName" maxlength="24" placeholder="NEON_RAZR" required>
+          </div>
+          <div class="field">
+            <label for="fanMsg">Message</label>
+            <textarea id="fanMsg" maxlength="280" placeholder="That drop at 1:24 destroyed my subwoofer..." required></textarea>
+          </div>
+          <label class="check-row" for="fanRequest">
+            <input type="checkbox" id="fanRequest">
+            <span>🎵 This is a song request</span>
+          </label>
+          <button type="submit" class="btn btn-primary">Post to the wall</button>
+        </form>
+        <div class="form-note" id="formNote"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONNECT ================= -->
+<section class="section" id="connect">
+  <div class="wrap">
+    <div class="connect-box reveal">
+      <h2>JOIN THE <span style="background:linear-gradient(100deg,var(--cyan),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent">D3V1L CULT</span></h2>
+      <p>Unreleased IDs, presale codes, and free downloads — straight to your inbox. No spam, only bass.</p>
+      <form class="signup" id="signupForm" autocomplete="off">
+        <input type="email" id="signupEmail" placeholder="your@email.com" required>
+        <button type="submit" class="btn btn-primary">Sign Me Up</button>
+      </form>
+      <div class="form-note" id="signupNote"></div>
+      <div class="socials">
+        <a class="social" href="#" title="SoundCloud">SC</a>
+        <a class="social" href="#" title="Spotify">SP</a>
+        <a class="social" href="#" title="YouTube">YT</a>
+        <a class="social" href="#" title="Instagram">IG</a>
+        <a class="social" href="#" title="TikTok">TT</a>
+        <a class="social" href="#" title="Discord">DC</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="foot">
+    <a class="logo" href="#home">BASS<span>_</span>D3V1L</a>
+    <button class="artist-link" id="artistLoginBtn">◈ Artist Login</button>
+    <p>© <span id="year"></span> BASS_D3V1L — Turn it up.</p>
+  </div>
+</footer>
+
+<!-- ============================================================
+     LOGIN MODAL
+     ============================================================ -->
+<div class="modal-backdrop" id="loginModal">
+  <div class="modal" id="loginCard">
+    <button class="modal-close" id="loginClose" aria-label="Close">✕</button>
+    <span class="sec-label">Restricted</span>
+    <h3>STUDIO LOGIN</h3>
+    <p>Artist access only. This portal is for BASS_D3V1L.</p>
+    <form id="loginForm" autocomplete="off">
+      <div class="field">
+        <label for="loginUser">Username</label>
+        <input type="text" id="loginUser" placeholder="#BASS_D3V1L88" required>
+      </div>
+      <div class="field">
+        <label for="loginPass">Password</label>
+        <input type="password" id="loginPass" placeholder="••••••••" required>
+      </div>
+      <div class="login-err" id="loginErr"></div>
+      <button type="submit" class="btn btn-primary" style="width:100%">Enter Portal</button>
+    </form>
+    <p class="login-hint">
+      Demo credentials<br>
+      user <code>#BASS_D3V1L88</code> · pass <code>devil88</code>
+    </p>
+  </div>
+</div>
+
+<!-- ============================================================
+     ADMIN PORTAL
+     ============================================================ -->
+<div class="portal" id="portal">
+  <div class="portal-inner">
+    <header class="portal-head">
+      <div class="portal-head-left">
+        <span class="logo">BASS<span>_</span>D3V1L</span>
+        <span class="portal-tag">STUDIO</span>
+      </div>
+      <div class="portal-head-right">
+        <span class="portal-user" id="portalUser">Logged in as #BASS_D3V1L88</span>
+        <button class="btn btn-ghost btn-sm" id="exitPortal">Exit Portal</button>
+      </div>
+    </header>
+
+    <div class="portal-tabs">
+      <button class="ptab active" data-tab="dash">Dashboard</button>
+      <button class="ptab" data-tab="upload">Upload Track</button>
+      <button class="ptab" data-tab="inbox">Messages <span class="pill zero" id="msgCount">0</span></button>
+      <button class="ptab" data-tab="requests">Song Requests <span class="pill zero" id="reqCount">0</span></button>
+      <button class="ptab" data-tab="library">Library <span class="pill zero" id="libCount">0</span></button>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="pane active" id="pane-dash">
+      <div class="dash-grid">
+        <div class="dash-card"><b id="dTracks">0</b><span>Tracks in Library</span></div>
+        <div class="dash-card lime"><b id="dUploads">0</b><span>Your Uploads</span></div>
+        <div class="dash-card magenta"><b id="dMsgs">0</b><span>Fan Messages</span></div>
+        <div class="dash-card"><b id="dReqs">0</b><span>Song Requests</span></div>
+        <div class="dash-card magenta"><b id="dLikes">0</b><span>Total Likes</span></div>
+      </div>
+
+      <div class="panel-box">
+        <h3>Recent Activity</h3>
+        <p class="sub">The last few things your fans dropped on the wall.</p>
+        <div id="recentList"></div>
+      </div>
+    </div>
+
+    <!-- UPLOAD -->
+    <div class="pane" id="pane-upload">
+      <div class="panel-box">
+        <h3>Upload a Track</h3>
+        <p class="sub">Drop an audio file and it goes live on your public tracklist instantly.</p>
+
+        <div class="drop-zone" id="dropZone">
+          <span class="dz-icon">⬆</span>
+          <div class="dz-main" id="dzMain">Drop your audio file here</div>
+          <div class="dz-sub" id="dzSub">or click to browse — MP3, WAV, OGG, M4A</div>
+          <input type="file" id="uploadFile" accept="audio/*" hidden>
+        </div>
+        <div class="up-bar" id="upBar"><i id="upBarFill"></i></div>
+
+        <form id="uploadForm" autocomplete="off">
+          <div class="upload-grid">
+            <div class="field">
+              <label for="uploadTitle">Track title *</label>
+              <input type="text" id="uploadTitle" maxlength="60" placeholder="D3V1L'S GATE" required>
+            </div>
+            <div class="field">
+              <label for="uploadGenre">Genre</label>
+              <input type="text" id="uploadGenre" maxlength="30" placeholder="Dubstep">
+            </div>
+            <div class="field">
+              <label for="uploadBpm">BPM</label>
+              <input type="number" id="uploadBpm" min="40" max="300" value="128">
+            </div>
+            <div class="field">
+              <label for="uploadDur">Duration</label>
+              <input type="text" id="uploadDur" placeholder="auto-detected" readonly style="opacity:.7">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" id="uploadBtn" style="margin-top:8px">Publish Track</button>
+        </form>
+      </div>
+
+      <div class="panel-box">
+        <h3>Your Uploads</h3>
+        <p class="sub">Everything you've published from this browser.</p>
+        <div id="uploadList"></div>
+      </div>
+    </div>
+
+    <!-- INBOX -->
+    <div class="pane" id="pane-inbox">
+      <div class="panel-box">
+        <h3>Fan Messages</h3>
+        <p class="sub">Everything your fans have posted. Reply, or clear the noise.</p>
+        <div id="inboxList"></div>
+      </div>
+    </div>
+
+    <!-- REQUESTS -->
+    <div class="pane" id="pane-requests">
+      <div class="panel-box">
+        <h3>Song Requests</h3>
+        <p class="sub">Tracks your fans are begging you to make or play.</p>
+        <div id="requestList"></div>
+      </div>
+    </div>
+
+    <!-- LIBRARY -->
+    <div class="pane" id="pane-library">
+      <div class="panel-box">
+        <h3>Full Library</h3>
+        <p class="sub">All tracks currently playable on the public site.</p>
+        <div id="libraryList"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   ⚙️  CONFIG
+   ============================================================ */
+
+/* --- ADMIN CREDENTIALS ------------------------------------- */
+const ADMIN_USER = '#BASS_D3V1L88';
+const ADMIN_PASS = 'devil88';
+
+/* --- BUILT-IN TRACKS ---------------------------------------
+   Add your own files in an /audio folder and set src.
+   Leave src:"" to use visual preview mode.
+------------------------------------------------------------ */
+const TRACKS = [
+  { title:"D3V1L'S GATE",  genre:"Dubstep",         bpm:150, dur:"3:42", src:"" },
+  { title:"NEON RIOT",     genre:"Bass House",      bpm:128, dur:"4:05", src:"" },
+  { title:"MIDNIGHT GRID", genre:"Midtempo",        bpm:110, dur:"3:28", src:"" },
+  { title:"SIGNAL LOST",   genre:"Melodic Dubstep", bpm:145, dur:"4:51", src:"" },
+  { title:"HELLV3LOCITY",  genre:"Hard Techno",     bpm:160, dur:"5:12", src:"" }
+];
+
+/* --- SHOWS -------------------------------------------------- */
+const SHOWS = [
+  { day:"14", month:"NOV", city:"Los Angeles, CA", venue:"The Underground",  status:"Tickets" },
+  { day:"22", month:"NOV", city:"Brooklyn, NY",    venue:"Bass Station",     status:"Tickets" },
+  { day:"06", month:"DEC", city:"Berlin, DE",      venue:"Kraftwerk Halle",  status:"Tickets" },
+  { day:"19", month:"DEC", city:"London, UK",      venue:"Neon Warehouse",   status:"Sold Out", soldout:true }
+];
+
+/* --- FAN WALL SEED ------------------------------------------ */
+const SEED_POSTS = [
+  { id:1, name:"NEON_RAZR",    msg:"That drop in D3V1L'S GATE at 1:24 broke my subwoofer. Worth every penny.", likes:47, time:Date.now()-1000*60*42,   request:false, replies:[] },
+  { id:2, name:"wobble_witch", msg:"Can you make a remix of MIDNIGHT GRID with harder drums? Would go insane live.", likes:31, time:Date.now()-1000*60*180, request:true,  replies:[] },
+  { id:3, name:"CYBERM0NK",    msg:"Saw you in Brooklyn last month. The whole floor was vibrating. Still recovering.", likes:22, time:Date.now()-1000*60*600, request:false, replies:[] },
+  { id:4, name:"subsonic_sam", msg:"Please release the unreleased ID from your Berlin set 🙏 that lead is insane", likes:15, time:Date.now()-1000*60*1440, request:true, replies:[] }
+];
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+function escapeHtml(s){
+  return String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+function parseDur(str){
+  const [m, s] = String(str).split(':').map(Number);
+  return (m||0)*60 + (s||0);
+}
+function fmt(sec){
+  if(!isFinite(sec) || sec < 0) sec = 0;
+  const m = Math.floor(sec/60);
+  const s = Math.floor(sec % 60);
+  return `${m}:${String(s).padStart(2,'0')}`;
+}
+function timeAgo(ts){
+  const s = Math.floor((Date.now() - ts) / 1000);
+  if(s < 60) return 'just now';
+  const m = Math.floor(s/60); if(m < 60) return `${m}m ago`;
+  const h = Math.floor(m/60); if(h < 24) return `${h}h ago`;
+  const d = Math.floor(h/24); if(d < 30) return `${d}d ago`;
+  return new Date(ts).toLocaleDateString();
+}
+const AVATAR_GRADIENTS = [
+  ['#00e5ff','#0077ff'], ['#ff2fd0','#7c3aed'], ['#b6ff3d','#00e5ff'],
+  ['#ff8a3d','#ff2fd0'], ['#7c3aed','#00e5ff']
+];
+function avatarFor(name){
+  const initials = String(name).replace(/[^a-zA-Z0-9]/g,'').slice(0,2).toUpperCase() || '??';
+  const gi = (String(name).charCodeAt(0) + String(name).length) % AVATAR_GRADIENTS.length;
+  const [c1,c2] = AVATAR_GRADIENTS[gi];
+  return { initials, c1, c2 };
+}
+
+/* ============================================================
+   INDEXEDDB — uploaded songs
+   ============================================================ */
+const DB_NAME = 'bassd3vil_db', DB_VER = 1, STORE = 'songs';
+
+function openDB(){
+  return new Promise((res, rej) => {
+    const req = indexedDB.open(DB_NAME, DB_VER);
+    req.onupgradeneeded = () => {
+      const db = req.result;
+      if(!db.objectStoreNames.contains(STORE)){
+        db.createObjectStore(STORE, { keyPath:'id', autoIncrement:true });
+      }
+    };
+    req.onsuccess = () => res(req.result);
+    req.onerror = () => rej(req.error);
+  });
+}
+async function dbGetAll(){
+  const db = await openDB();
+  return new Promise((res, rej) => {
+    const tx = db.transaction(STORE, 'readonly');
+    const r = tx.objectStore(STORE).getAll();
+    r.onsuccess = () => res(r.result || []);
+    r.onerror = () => rej(r.error);
+  });
+}
+async function dbAdd(song){
+  const db = await openDB();
+  return new Promise((res, rej) => {
+    const tx = db.transaction(STORE, 'readwrite');
+    const r = tx.objectStore(STORE).add(song);
+    r.onsuccess = () => res(r.result);
+    r.onerror = () => rej(r.error);
+  });
+}
+async function dbDelete(id){
+  const db = await openDB();
+  return new Promise((res, rej) => {
+    const tx = db.transaction(STORE, 'readwrite');
+    const r = tx.objectStore(STORE).delete(id);
+    r.onsuccess = () => res();
+    r.onerror = () => rej(r.error);
+  });
+}
+
+/* ============================================================
+   HERO CANVAS
+   ============================================================ */
+(function heroCanvas(){
+  const c = document.getElementById('heroCanvas');
+  if(!c) return;
+  const ctx = c.getContext('2d');
+  let W=0,H=0,dpr=1,offset=0;
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = c.clientWidth; H = c.clientHeight;
+    c.width = W*dpr; c.height = H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  const particles = Array.from({length:70}, () => ({
+    x:Math.random(), y:Math.random(), s:Math.random()*1.8+0.4,
+    v:Math.random()*0.00035+0.00012, a:Math.random()*0.6+0.15
+  }));
+
+  function draw(){
+    requestAnimationFrame(draw);
+    const t = performance.now()/1000;
+    offset += 0.0022 + (window.__bassPulse || 0) * 0.006;
+    ctx.clearRect(0,0,W,H);
+
+    const horizon = H*0.58;
+    const pulse = window.__bassPulse || 0;
+
+    ctx.lineWidth = 1;
+    const cols = 22;
+    for(let i=-cols; i<=cols; i++){
+      const xB = W/2 + i*(W/9);
+      const xT = W/2 + i*(W/90);
+      const grad = ctx.createLinearGradient(0,horizon,0,H);
+      grad.addColorStop(0,'rgba(0,229,255,0)');
+      grad.addColorStop(0.35,`rgba(0,229,255,${0.10+pulse*0.16})`);
+      grad.addColorStop(1,`rgba(255,47,208,${0.16+pulse*0.2})`);
+      ctx.strokeStyle = grad;
+      ctx.beginPath(); ctx.moveTo(xT,horizon); ctx.lineTo(xB,H+40); ctx.stroke();
+    }
+
+    const rows = 20;
+    for(let i=0;i<rows;i++){
+      const p = ((i/rows) + offset) % 1;
+      const y = horizon + (H-horizon)*Math.pow(p,2.4);
+      const alpha = Math.pow(p,1.6)*(0.30+pulse*0.35);
+      if(alpha <= 0.005) continue;
+      ctx.strokeStyle = `rgba(0,229,255,${alpha})`;
+      ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke();
+    }
+
+    const hg = ctx.createLinearGradient(0,horizon-60,0,horizon+60);
+    hg.addColorStop(0,'rgba(255,47,208,0)');
+    hg.addColorStop(0.5,`rgba(255,47,208,${0.10+pulse*0.18})`);
+    hg.addColorStop(1,'rgba(0,229,255,0)');
+    ctx.fillStyle = hg; ctx.fillRect(0,horizon-60,W,120);
+
+    for(const p of particles){
+      p.y -= p.v*(1+pulse*3);
+      if(p.y < -0.05){ p.y = 1.05; p.x = Math.random(); }
+      ctx.beginPath();
+      ctx.arc(p.x*W, p.y*H, p.s*(1+pulse*0.7), 0, Math.PI*2);
+      ctx.fillStyle = `rgba(180,240,255,${p.a})`;
+      ctx.shadowBlur = 10; ctx.shadowColor = 'rgba(0,229,255,.8)';
+      ctx.fill(); ctx.shadowBlur = 0;
+    }
+    void t;
+  }
+  draw();
+})();
+
+/* ============================================================
+   NAV
+   ============================================================ */
+const nav = document.getElementById('nav');
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), {passive:true});
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  burger.classList.remove('open'); navLinks.classList.remove('open');
+}));
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+let toastTimer;
+function toast(msg){
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3400);
+}
+
+/* ============================================================
+   COUNTERS + REVEAL
+   ============================================================ */
+(function counters(){
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(!e.isIntersecting || e.target.dataset.done) return;
+      e.target.dataset.done = '1';
+      const target = parseFloat(e.target.dataset.count);
+      const suffix = e.target.dataset.suffix || '';
+      const start = performance.now();
+      (function step(now){
+        const p = Math.min((now-start)/1400, 1);
+        const eased = 1 - Math.pow(1-p, 3);
+        e.target.textContent = Math.round(target*eased) + suffix;
+        if(p < 1) requestAnimationFrame(step);
+      })(start);
+    });
+  }, {threshold:0.4});
+  document.querySelectorAll('[data-count]').forEach(el => io.observe(el));
+})();
+
+(function reveal(){
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+
+/* ============================================================
+   AUDIO PLAYER
+   ============================================================ */
+const audio = new Audio();
+audio.preload = 'metadata';
+
+const disc       = document.getElementById('disc');
+const npTitle    = document.getElementById('npTitle');
+const npSub      = document.getElementById('npSub');
+const playBtn    = document.getElementById('playBtn');
+const prevBtn    = document.getElementById('prevBtn');
+const nextBtn    = document.getElementById('nextBtn');
+const progressEl = document.getElementById('progress');
+const progressFill = document.getElementById('progressFill');
+const timeEl     = document.getElementById('time');
+const volumeEl   = document.getElementById('volume');
+const tracklistEl = document.getElementById('tracklist');
+const viz        = document.getElementById('viz');
+const vizCtx     = viz.getContext('2d');
+
+let library = [];          // built-in + uploaded (merged)
+let uploadedTracks = [];   // from IndexedDB
+let currentIndex = -1;
+let isPlaying = false;
+let demoMode = false;
+let demoStart = 0;
+let demoElapsed = 0;
+let currentDuration = 0;
+let currentObjectUrl = null;
+
+/* --- build merged library --- */
+function rebuildLibrary(){
+  const uploads = uploadedTracks
+    .slice()
+    .sort((a,b) => b.added - a.added)
+    .map(t => ({
+      title: t.title, genre: t.genre, bpm: t.bpm,
+      dur: t.dur, durSec: t.durSec,
+      isUpload: true, id: t.id, blob: t.blob
+    }));
+  library = [...uploads, ...TRACKS.map(t => ({...t, isUpload:false}))];
+  renderTracklist();
+  renderAdmin();
+}
+
+function renderTracklist(){
+  tracklistEl.innerHTML = '';
+  library.forEach((tr, i) => {
+    const row = document.createElement('div');
+    row.className = 'track';
+    row.dataset.index = i;
+    row.innerHTML = `
+      <div class="track-num">${String(i+1).padStart(2,'0')}</div>
+      <div class="track-info">
+        <h4>${escapeHtml(tr.title)}${tr.isUpload ? '<span class="badge-upload">UPLOAD</span>' : ''}</h4>
+        <p>${escapeHtml(tr.genre)} · ${tr.bpm} BPM</p>
+      </div>
+      <div class="track-dur">${escapeHtml(tr.dur)}</div>
+      <button class="track-play" aria-label="Play ${escapeHtml(tr.title)}">▶</button>
+    `;
+    row.addEventListener('click', () => {
+      if(currentIndex === i && isPlaying) pause();
+      else loadTrack(i, true);
+    });
+    tracklistEl.appendChild(row);
+  });
+}
+
+/* --- Web Audio analyser --- */
+let audioCtx = null, analyser = null, freqData = null, analyserReady = false;
+function initAnalyser(){
+  if(analyserReady) return;
+  try{
+    const AC = window.AudioContext || window.webkitAudioContext;
+    audioCtx = new AC();
+    const source = audioCtx.createMediaElementSource(audio);
+    analyser = audioCtx.createAnalyser();
+    analyser.fftSize = 256;
+    analyser.smoothingTimeConstant = 0.78;
+    source.connect(analyser);
+    analyser.connect(audioCtx.destination);
+    freqData = new Uint8Array(analyser.frequencyBinCount);
+    analyserReady = true;
+  }catch(e){ analyserReady = false; }
+}
+
+/* --- track loading --- */
+function loadTrack(i, autoplay){
+  if(i < 0 || i >= library.length) return;
+  currentIndex = i;
+  const tr = library[i];
+
+  npTitle.innerHTML = escapeHtml(tr.title) + '<span class="badge-demo" id="demoBadge">PREVIEW</span>';
+  npSub.textContent = `${tr.genre} · ${tr.bpm} BPM`;
+  const badge = document.getElementById('demoBadge');
+
+  document.querySelectorAll('.track').forEach((el, idx) => {
+    el.classList.toggle('active', idx === i);
+    el.querySelector('.track-play').textContent = (idx === i && isPlaying) ? '❚❚' : '▶';
+  });
+
+  demoElapsed = 0;
+  currentDuration = tr.durSec || parseDur(tr.dur);
+
+  if(tr.isUpload && tr.blob){
+    demoMode = false;
+    badge.classList.remove('on');
+    if(currentObjectUrl) URL.revokeObjectURL(currentObjectUrl);
+    currentObjectUrl = URL.createObjectURL(tr.blob);
+    audio.src = currentObjectUrl;
+    audio.load();
+    audio.volume = parseFloat(volumeEl.value);
+  } else if(tr.src){
+    demoMode = false;
+    badge.classList.remove('on');
+    if(currentObjectUrl){ URL.revokeObjectURL(currentObjectUrl); currentObjectUrl = null; }
+    audio.src = tr.src;
+    audio.load();
+    audio.volume = parseFloat(volumeEl.value);
+  } else {
+    demoMode = true;
+    badge.classList.add('on');
+    if(currentObjectUrl){ URL.revokeObjectURL(currentObjectUrl); currentObjectUrl = null; }
+    audio.removeAttribute('src');
+    audio.load();
+  }
+
+  updateProgressUI(0, currentDuration);
+  if(autoplay) play();
+}
+
+function play(){
+  if(currentIndex === -1 && library.length) loadTrack(0, true);
+  if(demoMode){
+    isPlaying = true;
+    demoStart = performance.now() - demoElapsed*1000;
+    setPlayingUI(true);
+    return;
+  }
+  initAnalyser();
+  if(audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+  const p = audio.play();
+  if(p && p.catch){
+    p.then(() => setPlayingUI(true))
+     .catch(() => { toast('⚠️ Could not load audio — check the file path.'); setPlayingUI(false); });
+  } else setPlayingUI(true);
+}
+
+function pause(){
+  isPlaying = false;
+  if(demoMode) demoElapsed = (performance.now() - demoStart)/1000;
+  else audio.pause();
+  setPlayingUI(false);
+}
+
+function setPlayingUI(state){
+  isPlaying = state;
+  playBtn.textContent = state ? '❚❚' : '▶';
+  disc.classList.toggle('spin', state);
+  document.querySelectorAll('.track').forEach((el, idx) => {
+    el.querySelector('.track-play').textContent = (idx === currentIndex && state) ? '❚❚' : '▶';
+  });
+}
+
+function next(){ if(library.length) loadTrack((currentIndex+1) % library.length, isPlaying); }
+function prev(){
+  if(!demoMode && audio.currentTime > 3){ audio.currentTime = 0; return; }
+  if(demoMode && demoElapsed > 3){ demoElapsed = 0; demoStart = performance.now(); return; }
+  if(library.length) loadTrack((currentIndex-1+library.length) % library.length, isPlaying);
+}
+
+playBtn.addEventListener('click', () => isPlaying ? pause() : play());
+nextBtn.addEventListener('click', next);
+prevBtn.addEventListener('click', prev);
+audio.addEventListener('ended', next);
+audio.addEventListener('loadedmetadata', () => {
+  if(isFinite(audio.duration) && audio.duration > 0) currentDuration = audio.duration;
+});
+audio.addEventListener('error', () => {
+  if(audio.getAttribute('src')) toast('⚠️ Audio file not found.');
+});
+audio.addEventListener('play',  () => setPlayingUI(true));
+audio.addEventListener('pause', () => setPlayingUI(false));
+volumeEl.addEventListener('input', () => { audio.volume = parseFloat(volumeEl.value); });
+
+progressEl.addEventListener('click', (e) => {
+  const rect = progressEl.getBoundingClientRect();
+  const ratio = Math.min(Math.max((e.clientX-rect.left)/rect.width, 0), 1);
+  if(demoMode){
+    demoElapsed = ratio*currentDuration;
+    demoStart = performance.now() - demoElapsed*1000;
+  } else if(isFinite(audio.duration)){
+    audio.currentTime = ratio*audio.duration;
+  }
+});
+
+function updateProgressUI(elapsed, total){
+  progressFill.style.width = (total > 0 ? (elapsed/total)*100 : 0) + '%';
+  timeEl.textContent = `${fmt(elapsed)} / ${fmt(total)}`;
+}
+
+/* --- visualizer loop --- */
+const BAR_COUNT = 72;
+const levels = new Array(BAR_COUNT).fill(0);
+let vizW=0, vizH=0, vizDpr=1;
+function resizeViz(){
+  vizDpr = Math.min(window.devicePixelRatio || 1, 2);
+  vizW = viz.clientWidth; vizH = viz.clientHeight;
+  viz.width = vizW*vizDpr; viz.height = vizH*vizDpr;
+  vizCtx.setTransform(vizDpr,0,0,vizDpr,0,0);
+}
+window.addEventListener('resize', resizeViz);
+resizeViz();
+
+let lastFrame = performance.now();
+function loop(now){
+  requestAnimationFrame(loop);
+  lastFrame = now;
+  const t = now/1000;
+
+  if(isPlaying && demoMode){
+    demoElapsed = (now - demoStart)/1000;
+    if(demoElapsed >= currentDuration){ demoElapsed = currentDuration; next(); return; }
+    updateProgressUI(demoElapsed, currentDuration);
+  } else if(!demoMode && currentIndex !== -1){
+    updateProgressUI(audio.currentTime || 0, currentDuration);
+  }
+
+  let useReal = false;
+  if(analyserReady && analyser && !demoMode && isPlaying){
+    analyser.getByteFrequencyData(freqData);
+    useReal = true;
+  }
+
+  let bassEnergy = 0;
+  for(let i=0;i<BAR_COUNT;i++){
+    let target = 0;
+    if(useReal){
+      const idx = Math.floor((i/BAR_COUNT)*freqData.length*0.72);
+      target = Math.pow(freqData[idx]/255, 0.85);
+    } else if(isPlaying){
+      const shape = 0.35 + 0.65*Math.abs(Math.sin(i*0.31 + t*2.4));
+      const wobble = 0.5 + 0.5*Math.sin(i*0.09 - t*1.7);
+      const noise = 0.55 + 0.45*Math.random();
+      const tilt = 0.4 + 0.6*(1 - (i/BAR_COUNT)*0.72);
+      target = shape*wobble*noise*tilt;
+    }
+    levels[i] += (target - levels[i]) * (target > levels[i] ? 0.42 : 0.13);
+    if(i < 10) bassEnergy += levels[i];
+  }
+  bassEnergy /= 10;
+  window.__bassPulse = isPlaying ? bassEnergy*0.85 : 0;
+
+  vizCtx.clearRect(0,0,vizW,vizH);
+  const bw = vizW/BAR_COUNT;
+  const gap = Math.max(bw*0.22, 1);
+  for(let i=0;i<BAR_COUNT;i++){
+    const h = Math.max(levels[i]*vizH*0.92, 1.5);
+    const x = i*bw;
+    const y = vizH - h;
+    const grad = vizCtx.createLinearGradient(0,vizH,0,y);
+    grad.addColorStop(0,'rgba(0,229,255,.95)');
+    grad.addColorStop(0.55,'rgba(120,120,255,.9)');
+    grad.addColorStop(1,'rgba(255,47,208,.95)');
+    vizCtx.fillStyle = grad;
+    vizCtx.shadowBlur = 12; vizCtx.shadowColor = 'rgba(0,229,255,.55)';
+    vizCtx.beginPath();
+    roundRect(vizCtx, x+gap/2, y, bw-gap, h, Math.min(bw-gap, 3));
+    vizCtx.fill();
+  }
+  vizCtx.shadowBlur = 0;
+}
+requestAnimationFrame(loop);
+
+function roundRect(ctx,x,y,w,h,r){
+  r = Math.min(r, w/2, h/2);
+  ctx.moveTo(x+r,y);
+  ctx.arcTo(x+w,y,x+w,y+h,r);
+  ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r);
+  ctx.arcTo(x,y,x+w,y,r);
+  ctx.closePath();
+}
+
+/* ============================================================
+   SHOWS
+   ============================================================ */
+(function renderShows(){
+  const el = document.getElementById('showsList');
+  SHOWS.forEach(s => {
+    const row = document.createElement('div');
+    row.className = 'show' + (s.soldout ? ' soldout' : '');
+    row.innerHTML = `
+      <div class="show-date">${s.day} ${s.month}<small>2026</small></div>
+      <div class="show-venue"><h4>${escapeHtml(s.venue)}</h4><p>${escapeHtml(s.city)}</p></div>
+      <button class="btn ${s.soldout ? 'btn-ghost' : 'btn-primary'}">${s.status}</button>
+    `;
+    row.querySelector('button').addEventListener('click', () => {
+      if(s.soldout) return;
+      toast(`🎟️ Ticket link for ${s.city} — wire this to your ticket URL.`);
+    });
+    el.appendChild(row);
+  });
+})();
+
+/* ============================================================
+   FAN WALL
+   ============================================================ */
+const POSTS_KEY = 'bassd3vil_fanwall_v2';
+const LIKES_KEY = 'bassd3vil_likes_v2';
+
+let posts = loadPosts();
+let liked = JSON.parse(localStorage.getItem(LIKES_KEY) || '[]');
+
+function loadPosts(){
+  try{
+    const raw = localStorage.getItem(POSTS_KEY);
+    if(raw){
+      const parsed = JSON.parse(raw);
+      return parsed.map(p => ({ ...p, replies: p.replies || [], request: !!p.request }));
+    }
+  }catch(e){}
+  return JSON.parse(JSON.stringify(SEED_POSTS));
+}
+function savePosts(){
+  try{ localStorage.setItem(POSTS_KEY, JSON.stringify(posts)); }catch(e){}
+}
+
+function renderWall(){
+  const wall = document.getElementById('wall');
+  wall.innerHTML = '';
+
+  if(!posts.length){
+    wall.innerHTML = `<div class="empty"><span class="e-icon">💬</span><p>No messages yet. Be the first.</p></div>`;
+    return;
+  }
+
+  posts.forEach(p => {
+    const { initials, c1, c2 } = avatarFor(p.name);
+    const isLiked = liked.includes(p.id);
+    const replies = p.replies || [];
+
+    const card = document.createElement('div');
+    card.className = 'fan-card' + (p.request ? ' is-request' : '');
+    card.innerHTML = `
+      <div class="fan-top">
+        <div class="avatar" style="background:linear-gradient(120deg,${c1},${c2})">${escapeHtml(initials)}</div>
+        <div>
+          <div class="fan-name">
+            ${escapeHtml(p.name)}
+            ${p.request ? '<span class="req-tag">🎵 SONG REQUEST</span>' : ''}
+          </div>
+          <div class="fan-time">${timeAgo(p.time)}</div>
+        </div>
+      </div>
+      <div class="fan-msg">${escapeHtml(p.msg)}</div>
+      <div class="fan-actions">
+        <button class="like-btn ${isLiked ? 'liked' : ''}" data-id="${p.id}">
+          ${isLiked ? '❤' : '♡'} <span>${p.likes}</span>
+        </button>
+      </div>
+      ${replies.length ? `
+        <div class="fan-replies">
+          ${replies.map(r => `
+            <div class="reply">
+              <div class="reply-head">
+                <span class="reply-badge">BASS_D3V1L</span>
+                <span class="reply-time">${timeAgo(r.time)}</span>
+              </div>
+              <p>${escapeHtml(r.text)}</p>
+            </div>
+          `).join('')}
+        </div>` : ''}
+    `;
+    card.querySelector('.like-btn').addEventListener('click', () => toggleLike(p.id));
+    wall.appendChild(card);
+  });
+}
+
+function toggleLike(id){
+  const post = posts.find(p => p.id === id);
+  if(!post) return;
+  const i = liked.indexOf(id);
+  if(i === -1){ liked.push(id); post.likes++; }
+  else{ liked.splice(i,1); post.likes = Math.max(0, post.likes-1); }
+  localStorage.setItem(LIKES_KEY, JSON.stringify(liked));
+  savePosts();
+  renderWall();
+  renderAdmin();
+}
+
+document.getElementById('fanForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const nameEl = document.getElementById('fanName');
+  const msgEl  = document.getElementById('fanMsg');
+  const reqEl  = document.getElementById('fanRequest');
+  const name = nameEl.value.trim();
+  const msg  = msgEl.value.trim();
+  if(!name || !msg) return;
+
+  posts.unshift({
+    id: Date.now(),
+    name: name.slice(0,24),
+    msg: msg.slice(0,280),
+    likes: 0,
+    time: Date.now(),
+    request: reqEl.checked,
+    replies: []
+  });
+  savePosts();
+  renderWall();
+  renderAdmin();
+
+  nameEl.value = '';
+  msgEl.value = '';
+  reqEl.checked = false;
+  const note = document.getElementById('formNote');
+  note.textContent = '✓ Posted to the wall. Welcome to the cult.';
+  setTimeout(() => note.textContent = '', 3200);
+  document.getElementById('wall').scrollTop = 0;
+});
+
+renderWall();
+
+/* ============================================================
+   SIGNUP
+   ============================================================ */
+document.getElementById('signupForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const email = document.getElementById('signupEmail').value.trim();
+  const note = document.getElementById('signupNote');
+  if(!email) return;
+  note.textContent = `✓ You're in, ${email.split('@')[0]}. Check your inbox for the first drop.`;
+  document.getElementById('signupEmail').value = '';
+  setTimeout(() => note.textContent = '', 5000);
+});
+
+/* ============================================================
+   LOGIN
+   ============================================================ */
+const loginModal = document.getElementById('loginModal');
+const loginCard  = document.getElementById('loginCard');
+const loginForm  = document.getElementById('loginForm');
+const loginErr   = document.getElementById('loginErr');
+const loginUser  = document.getElementById('loginUser');
+const loginPass  = document.getElementById('loginPass');
+
+function openLogin(){
+  loginModal.classList.add('open');
+  setTimeout(() => loginUser.focus(), 120);
+}
+function closeLogin(){
+  loginModal.classList.remove('open');
+  loginErr.textContent = '';
+  loginForm.reset();
+}
+
+document.getElementById('artistLoginBtn').addEventListener('click', openLogin);
+document.getElementById('loginClose').addEventListener('click', closeLogin);
+loginModal.addEventListener('click', (e) => { if(e.target === loginModal) closeLogin(); });
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape'){
+    if(loginModal.classList.contains('open')) closeLogin();
+    else if(portal.classList.contains('open')) exitPortal();
+  }
+  // Ctrl+Shift+A shortcut
+  if(e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')){
+    e.preventDefault();
+    if(sessionStorage.getItem('bassd3vil_admin') === '1') openPortal();
+    else openLogin();
+  }
+});
+
+loginForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const u = loginUser.value.trim();
+  const p = loginPass.value;
+
+  const userOk = u.toLowerCase() === ADMIN_USER.toLowerCase() || u.toLowerCase() === ADMIN_USER.replace('#','').toLowerCase();
+  const passOk = p === ADMIN_PASS;
+
+  if(userOk && passOk){
+    loginErr.textContent = '';
+    sessionStorage.setItem('bassd3vil_admin', '1');
+    closeLogin();
+    openPortal();
+    toast('◈ Welcome back, BASS_D3V1L.');
+  } else {
+    loginErr.textContent = userOk ? '✕ Wrong password.' : '✕ Unknown user. This portal is private.';
+    loginCard.classList.remove('shake');
+    void loginCard.offsetWidth;
+    loginCard.classList.add('shake');
+    loginPass.value = '';
+  }
+});
+
+/* ============================================================
+   ADMIN PORTAL
+   ============================================================ */
+const portal = document.getElementById('portal');
+
+function openPortal(){
+  portal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  renderAdmin();
+}
+function exitPortal(){
+  portal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('exitPortal').addEventListener('click', exitPortal);
+
+/* --- tabs --- */
+document.querySelectorAll('.ptab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('pane-' + tab.dataset.tab).classList.add('active');
+    portal.scrollTop = 0;
+  });
+});
+
+/* --- render admin panels --- */
+function renderAdmin(){
+  if(!portal.classList.contains('open')) return;
+
+  const requests = posts.filter(p => p.request);
+  const totalLikes = posts.reduce((s,p) => s + (p.likes||0), 0);
+
+  /* counts */
+  setPill('msgCount', posts.length);
+  setPill('reqCount', requests.length);
+  setPill('libCount', library.length);
+
+  /* dashboard */
+  document.getElementById('dTracks').textContent  = library.length;
+  document.getElementById('dUploads').textContent = uploadedTracks.length;
+  document.getElementById('dMsgs').textContent    = posts.length;
+  document.getElementById('dReqs').textContent    = requests.length;
+  document.getElementById('dLikes').textContent   = totalLikes;
+
+  /* recent activity */
+  const recent = document.getElementById('recentList');
+  const latest = posts.slice().sort((a,b) => b.time - a.time).slice(0,4);
+  if(!latest.length){
+    recent.innerHTML = `<div class="empty"><span class="e-icon">📭</span><p>Nothing yet.</p></div>`;
+  } else {
+    recent.innerHTML = latest.map(p => {
+      const { initials, c1, c2 } = avatarFor(p.name);
+      return `
+        <div class="admin-item ${p.request ? 'is-request':''}">
+          <div class="ai-top">
+            <div class="ai-who">
+              <div class="avatar" style="background:linear-gradient(120deg,${c1},${c2})">${escapeHtml(initials)}</div>
+              <div>
+                <div class="fan-name">${escapeHtml(p.name)} ${p.request ? '<span class="req-tag">REQUEST</span>' : ''}</div>
+                <div class="ai-meta">${timeAgo(p.time)}</div>
+              </div>
+            </div>
+          </div>
+          <div class="ai-msg" style="margin-bottom:0">${escapeHtml(p.msg)}</div>
+        </div>`;
+    }).join('');
+  }
+
+  /* inbox */
+  document.getElementById('inboxList').innerHTML = posts.length
+    ? posts.map(p => adminItemHTML(p)).join('')
+    : `<div class="empty"><span class="e-icon">📭</span><p>No messages yet.</p></div>`;
+
+  /* requests */
+  document.getElementById('requestList').innerHTML = requests.length
+    ? requests.map(p => adminItemHTML(p)).join('')
+    : `<div class="empty"><span class="e-icon">🎵</span><p>No song requests yet.</p></div>`;
+
+  /* library */
+  document.getElementById('libraryList').innerHTML = library.length
+    ? library.map((t,i) => `
+        <div class="song-row">
+          <div class="song-num">${String(i+1).padStart(2,'0')}</div>
+          <div>
+            <h5>${escapeHtml(t.title)} ${t.isUpload ? '<span class="badge-upload">UPLOAD</span>' : ''}</h5>
+            <p>${escapeHtml(t.genre)} · ${t.bpm} BPM</p>
+          </div>
+          <div class="dur">${escapeHtml(t.dur)}</div>
+          <div>${t.isUpload
+            ? `<button class="btn btn-danger btn-sm" data-del="${t.id}">Delete</button>`
+            : `<span class="ai-meta" style="font-size:.58rem">BUILT-IN</span>`}</div>
+        </div>`).join('')
+    : `<div class="empty"><span class="e-icon">🎧</span><p>Library is empty.</p></div>`;
+
+  /* uploads list */
+  document.getElementById('uploadList').innerHTML = uploadedTracks.length
+    ? uploadedTracks.slice().sort((a,b) => b.added - a.added).map(t => `
+        <div class="song-row">
+          <div class="song-num">♪</div>
+          <div>
+            <h5>${escapeHtml(t.title)}</h5>
+            <p>${escapeHtml(t.genre)} · ${t.bpm} BPM · added ${timeAgo(t.added)}</p>
+          </div>
+          <div class="dur">${escapeHtml(t.dur)}</div>
+          <div><button class="btn btn-danger btn-sm" data-del="${t.id}">Delete</button></div>
+        </div>`).join('')
+    : `<div class="empty"><span class="e-icon">⬆</span><p>You haven't uploaded anything yet.</p></div>`;
+
+  /* wire admin buttons */
+  portal.querySelectorAll('[data-del]').forEach(btn => {
+    btn.addEventListener('click', () => deleteUpload(parseInt(btn.dataset.del, 10)));
+  });
+  portal.querySelectorAll('[data-reply-toggle]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const form = document.getElementById('replyForm-' + btn.dataset.replyToggle);
+      form.classList.toggle('open');
+      if(form.classList.contains('open')) form.querySelector('textarea').focus();
+    });
+  });
+  portal.querySelectorAll('[data-reply-send]').forEach(btn => {
+    btn.addEventListener('click', () => sendReply(parseInt(btn.dataset.replySend, 10)));
+  });
+  portal.querySelectorAll('[data-delete-post]').forEach(btn => {
+    btn.addEventListener('click', () => deletePost(parseInt(btn.dataset.deletePost, 10)));
+  });
+}
+
+function setPill(id, n){
+  const el = document.getElementById(id);
+  el.textContent = n;
+  el.classList.toggle('zero', n === 0);
+}
+
+function adminItemHTML(p){
+  const { initials, c1, c2 } = avatarFor(p.name);
+  const replies = p.replies || [];
+  return `
+    <div class="admin-item ${p.request ? 'is-request' : ''}">
+      <div class="ai-top">
+        <div class="ai-who">
+          <div class="avatar" style="background:linear-gradient(120deg,${c1},${c2})">${escapeHtml(initials)}</div>
+          <div>
+            <div class="fan-name">
+              ${escapeHtml(p.name)}
+              ${p.request ? '<span class="req-tag">🎵 SONG REQUEST</span>' : ''}
+            </div>
+            <div class="ai-meta">${timeAgo(p.time)} · ${p.likes} likes</div>
+          </div>
+        </div>
+      </div>
+      <div class="ai-msg">${escapeHtml(p.msg)}</div>
+      <div class="ai-actions">
+        <button class="btn btn-ghost btn-sm" data-reply-toggle="${p.id}">↩ Reply</button>
+        <button class="btn btn-danger btn-sm" data-delete-post="${p.id}">Delete</button>
+      </div>
+      ${replies.length ? `
+        <div class="ai-replies">
+          ${replies.map(r => `
+            <div class="reply">
+              <div class="reply-head">
+                <span class="reply-badge">BASS_D3V1L</span>
+                <span class="reply-time">${timeAgo(r.time)}</span>
+              </div>
+              <p>${escapeHtml(r.text)}</p>
+            </div>`).join('')}
+        </div>` : ''}
+      <div class="ai-reply-form" id="replyForm-${p.id}">
+        <textarea placeholder="Reply as BASS_D3V1L..." maxlength="280"></textarea>
+        <button class="btn btn-primary btn-sm" data-reply-send="${p.id}" style="align-self:flex-start">Send Reply</button>
+      </div>
+    </div>`;
+}
+
+function sendReply(postId){
+  const form = document.getElementById('replyForm-' + postId);
+  const ta = form.querySelector('textarea');
+  const text = ta.value.trim();
+  if(!text) return;
+  const post = posts.find(p => p.id === postId);
+  if(!post) return;
+  post.replies = post.replies || [];
+  post.replies.push({ text: text.slice(0,280), time: Date.now() });
+  savePosts();
+  renderWall();
+  renderAdmin();
+  toast('✓ Reply posted to the wall.');
+}
+
+function deletePost(postId){
+  if(!confirm('Delete this message permanently?')) return;
+  posts = posts.filter(p => p.id !== postId);
+  savePosts();
+  renderWall();
+  renderAdmin();
+  toast('🗑 Message deleted.');
+}
+
+/* ============================================================
+   UPLOAD
+   ============================================================ */
+const dropZone  = document.getElementById('dropZone');
+const fileInput = document.getElementById('uploadFile');
+const dzMain    = document.getElementById('dzMain');
+const dzSub     = document.getElementById('dzSub');
+const uploadDur = document.getElementById('uploadDur');
+const upBar     = document.getElementById('upBar');
+const upBarFill = document.getElementById('upBarFill');
+
+let pendingFile = null;
+let pendingDuration = 0;
+
+dropZone.addEventListener('click', () => fileInput.click());
+dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('drag'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag'));
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropZone.classList.remove('drag');
+  const f = e.dataTransfer.files && e.dataTransfer.files[0];
+  if(f) handleFile(f);
+});
+fileInput.addEventListener('change', () => {
+  if(fileInput.files[0]) handleFile(fileInput.files[0]);
+});
+
+async function handleFile(file){
+  if(!file.type.startsWith('audio/')){
+    toast('⚠️ That is not an audio file.');
+    return;
+  }
+  pendingFile = file;
+  dropZone.classList.add('has-file');
+  dzMain.textContent = file.name;
+  dzSub.textContent = (file.size/1048576).toFixed(1) + ' MB · reading duration...';
+
+  pendingDuration = await getAudioDuration(file);
+  uploadDur.value = fmt(pendingDuration);
+  dzSub.textContent = (file.size/1048576).toFixed(1) + ' MB · ' + fmt(pendingDuration);
+
+  const titleInput = document.getElementById('uploadTitle');
+  if(!titleInput.value){
+    titleInput.value = file.name.replace(/\.[^.]+$/, '').replace(/[_-]+/g,' ').toUpperCase().slice(0,60);
+  }
+}
+
+function getAudioDuration(file){
+  return new Promise((res) => {
+    const url = URL.createObjectURL(file);
+    const a = new Audio();
+    a.preload = 'metadata';
+    a.onloadedmetadata = () => { URL.revokeObjectURL(url); res(a.duration || 0); };
+    a.onerror = () => { URL.revokeObjectURL(url); res(0); };
+    a.src = url;
+  });
+}
+
+document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const title = document.getElementById('uploadTitle').value.trim();
+  const genre = document.getElementById('uploadGenre').value.trim() || 'Unreleased';
+  const bpm   = parseInt(document.getElementById('uploadBpm').value, 10) || 128;
+
+  if(!title){ toast('⚠️ Give the track a title.'); return; }
+  if(!pendingFile){ toast('⚠️ Select an audio file first.'); return; }
+
+  upBar.classList.add('on');
+  upBarFill.style.width = '30%';
+
+  try{
+    upBarFill.style.width = '65%';
+    await dbAdd({
+      title,
+      genre,
+      bpm,
+      durSec: pendingDuration,
+      dur: fmt(pendingDuration),
+      blob: pendingFile,
+      added: Date.now()
+    });
+    upBarFill.style.width = '100%';
+
+    uploadedTracks = await dbGetAll();
+    rebuildLibrary();
+
+    /* reset form */
+    document.getElementById('uploadForm').reset();
+    document.getElementById('uploadBpm').value = 128;
+    uploadDur.value = '';
+    pendingFile = null;
+    pendingDuration = 0;
+    dropZone.classList.remove('has-file');
+    dzMain.textContent = 'Drop your audio file here';
+    dzSub.textContent = 'or click to browse — MP3, WAV, OGG, M4A';
+    fileInput.value = '';
+
+    toast('✓ Track published to your public page.');
+  }catch(err){
+    console.error(err);
+    toast('⚠️ Upload failed — the file may be too large for browser storage.');
+  }finally{
+    setTimeout(() => { upBar.classList.remove('on'); upBarFill.style.width = '0%'; }, 700);
+  }
+});
+
+async function deleteUpload(id){
+  if(!confirm('Delete this track? It will be removed from your public page.')) return;
+
+  const wasPlayingUpload = library[currentIndex] && library[currentIndex].isUpload && library[currentIndex].id === id;
+  if(wasPlayingUpload){
+    pause();
+    currentIndex = -1;
+    if(currentObjectUrl){ URL.revokeObjectURL(currentObjectUrl); currentObjectUrl = null; }
+    audio.removeAttribute('src');
+    npTitle.textContent = 'Select a track';
+    npSub.textContent = 'Press play to start the set';
+  }
+
+  await dbDelete(id);
+  uploadedTracks = await dbGetAll();
+  rebuildLibrary();
+  toast('🗑 Track deleted.');
+}
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+(async function boot(){
+  try{ uploadedTracks = await dbGetAll(); }
+  catch(e){ uploadedTracks = []; }
+
+  rebuildLibrary();
+  if(library.length) loadTrack(0, false);
+
+  /* restore admin session */
+  if(sessionStorage.getItem('bassd3vil_admin') === '1'){
+    /* silent — they can reopen via the artist login link or Ctrl+Shift+A */
+  }
+})();
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* keep admin panels fresh if wall changes elsewhere */
+window.addEventListener('storage', (e) => {
+  if(e.key === POSTS_KEY){ posts = loadPosts(); renderWall(); renderAdmin(); }
+});
+</script>
+</body>
+      </html>
